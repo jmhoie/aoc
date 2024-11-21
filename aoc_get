@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+# regex pattern: "/aoc/NUMBER/NUMBER" -- used to search CWD for year and day
+STRUCTURE_REGEX="/aoc/([0-9]+)/([0-9])"
+
+SESSION_ID=$(cat ~/dev/aoc/session_id)
+
+# default args for $YEAR and $DAY
+if [[ $PWD =~ $STRUCTURE_REGEX ]]; then
+	# use the year and day in CWD
+	YEAR="${BASH_REMATCH[1]}"
+	DAY="${BASH_REMATCH[2]}"
+else
+	# use the current date
+	YEAR=$(date +"%Y")
+	DAY=$(date +"%-d")
+fi
+
+show_help() {
+  cat <<EOF
+Usage: aoc_get [options...]
+ -d, --day	The day of the month
+ -y, --year	The year of the event
+ -h, --help	Shows usage
+EOF
+}
+
+# parse command line arguments
+while [[ $# -gt 0 ]]; do
+	case $1 in
+		-d|--day)
+			DAY="$2"
+			shift 2
+			;;
+		-y|--year)
+			YEAR="$2"
+			shift 2
+			;;
+		--) # end of options
+			shift
+			break
+			;;
+		-h|--help) # help option
+			show_help
+			exit 0
+			;;
+		*) # invalid option
+			echo "Invalid option: $1"
+			show_help
+			exit 1
+			;;
+	esac
+done
+
+curl -b "session=$SESSION_ID" https://adventofcode.com/$YEAR/day/$DAY/input > ./input.txt
