@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-# regex pattern: "/aoc/NUMBER/NUMBER" -- used to search CWD for year and day
-STRUCTURE_REGEX="/aoc/([0-9]+)/([0-9])"
-
+STRUCTURE_REGEX="/aoc/([0-9]+)/([0-9])" # regex pattern: "/aoc/NUMBER/NUMBER" -- used to search CWD for year and day
 SESSION_ID=$(cat ~/dev/aoc/session_id)
 
 # default args for $YEAR and $DAY
@@ -36,13 +34,13 @@ while [[ $# -gt 0 ]]; do
 			YEAR="$2"
 			shift 2
 			;;
+		-h|--help)
+			show_help
+			exit 0
+			;;
 		--) # end of options
 			shift
 			break
-			;;
-		-h|--help) # help option
-			show_help
-			exit 0
 			;;
 		*) # invalid option
 			echo "Invalid option: $1"
