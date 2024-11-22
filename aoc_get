@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-STRUCTURE_REGEX="/aoc/([0-9]+)/([0-9])" # regex pattern: "/aoc/NUMBER/NUMBER" -- used to search CWD for year and day
+STRUCTURE_REGEX="/aoc/([0-9]+)/([0-9]+)" # regex pattern: "/aoc/NUMBER/NUMBER" -- used to search CWD for year and day
 SESSION_ID=$(cat ~/dev/aoc/session_id)
 
 # default args for $YEAR and $DAY
