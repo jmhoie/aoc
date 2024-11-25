@@ -27,15 +27,15 @@ int sol1() {
 		tok = strtok(NULL, "x"); // returns third str, i.e. paper height.
 		h = atoi(tok);
 
-		// find smallest side
+		// find smallest side.
 		int min, second_min;
-		if (l <= h && l <= w) {
+		if (l <= h && l <= w) { // if 'l' is the smallest.
 			min = l;
-			second_min = (h <= w) ? h : w; // '?' -> ternary operator
-		} else if (h <= l && h <= w) {
+			second_min = (h <= w) ? h : w; // '?' -> ternary operator. returns whatever is smallest of 'h' and 'w'.
+		} else if (h <= l && h <= w) { // if 'h' is the smallest.
 			min = h;
 			second_min = (l <= w) ? l : w;
-		} else {
+		} else { // if 'w' is the smallest.
 			min = w;
 			second_min = (l <= h) ? l : h;
 		}
