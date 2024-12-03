@@ -38,7 +38,7 @@ fn parseFile(allocator: std.mem.Allocator) !std.ArrayList(Factors) {
     while (f_iter.next()) |line| {
         var i: u16 = 0;
         while (i < line.len) : (i += 1) {
-            // check if new do flag
+            // check if need to flip the do flag
             if (std.mem.startsWith(u8, line[i..], "don't()")) {
                 do = false;
                 i += 7; // skip over the characters in "don't()"
