@@ -1,4 +1,5 @@
 session_id
+example.txt
 input.txt
 
 .zig-cache/
