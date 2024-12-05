@@ -1,5 +1,6 @@
 session_id
 input.txt
+example.txt
 
 .zig-cache/
 zig-out/
